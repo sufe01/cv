@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sufyan Ramzan CV</title>
+    <title>Safyan Ramzan CV</title>
     <link rel="icon" type="image/png" href="assets/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="assets/favicon/favicon.svg" />
     <link rel="shortcut icon" href="assets/favicon/favicon.ico" />
@@ -17,9 +17,9 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <div class="container">
+    <div id="print-page" class="container">
         <div class="top">
-            <h2>Sufyan Ramzan<br><span>Creative Designer & Developer</span></h2>
+            <h2>Safyan Ramzan<br><span>Creative Designer & Developer</span></h2>
             <div class="group">
                 <div class="leftSide">
                     <div class="imgBox">
@@ -79,8 +79,8 @@
                         <p>ReactJS</p>
                         <div class="value"></div>
                     </div>
-                    <div class="skillsBox" style="--i: 45%;">
-                        <p>PhotoShop</p>
+                    <div class="skillsBox" style="--i: 80%;">
+                        <p>Tailwind</p>
                         <div class="value"></div>
                     </div>
                     <div class="skillsBox" style="--i: 75%;">
@@ -237,6 +237,26 @@
         </form>
         <button type="button" class='close-pop' onclick="closePopup()">❌</button>
     </div>
+    <button onclick="downloadDivAsImage()" type="button" class="btn-print">
+        <span class="material-icons-round">print</span>
+        Generate PDF
+    </button>
+
     <script src="assets/js/script.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script>
+        function downloadDivAsImage() {
+            const divToCapture = document.getElementById('print-page');
+            html2canvas(divToCapture).then(canvas => {
+                const image = canvas.toDataURL("image/png", 1.0);
+                const link = document.createElement('a');
+                link.download = 'captured-div.png';
+                link.href = image;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            });
+        }
+    </script>
 </body>
 </html>
